@@ -114,6 +114,62 @@
   }
 }
 
+#let footer(self) = {
+  set align(bottom)
+  show: pad.with(1cm)
+  set text(fill: self.colors.neutral-darkest, size: .5em)
+  grid(
+    columns: (.9cm, .1cm, 1fr, 4cm),
+    align: left,
+    gutter: 5pt,
+    place(right, [
+      #text(size: 1cm, context utils.slide-counter.display())
+    ]),
+    line(start: (0%, 0%), angle: 90deg, length: .7cm, stroke: .5pt + rgb("#808080")),
+    [
+      #text(size: .3cm, self.info.authors.join(", ") + ",")
+      #text(size: .3cm, display-date(self.info.date)) \
+      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title))
+    ],
+    place(right, [#image("htwk.png", height: .7cm)])
+  )
+}
+
+#let header(self, colorizeEdges: true, title: none) = {
+  set align(top)
+  show: components.cell.with(inset: 1em)
+  headerOutline()
+  grid(
+    columns: (1cm, 1fr, 1cm),
+    rows: 2cm,
+    align: left + horizon,
+    gutter: .5cm,
+    fill: (
+      if colorizeEdges {rgb(self.colors.primary)} else {none},
+      none,
+      if colorizeEdges {rgb(self.colors.primary)} else {none},
+    ),
+    [],
+    {
+      strong(
+        if title != none {
+          [#title]
+        }
+        else {
+          if self.store.title != none {
+            set text(fill: self.colors.neutral-darkest, size: 1cm)
+            utils.call-or-display(self, self.store.title)
+          } else {
+            set text(fill: self.colors.neutral-darkest, size: 1cm)
+            utils.display-current-heading(level: 2)
+          }
+        }
+      )
+    },
+    []
+  )
+}
+
 #let slide(title: auto, ..args) = touying-slide-wrapper(self => {
   set list(marker: ([
     #set text(fill: self.colors.primary)
@@ -123,269 +179,188 @@
   if title != auto {
     self.store.title = title
   }
-  // set page
-  let header(self) = {
-    set align(top)
-    show: components.cell.with(inset: 1em)
-    headerOutline()
-    grid(
-      columns: (1cm, 1fr, 1cm),
-      rows: 2cm,
-      align: left + horizon,
-      gutter: .5cm,
-      fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
-      [],
-      {
-        strong(
-          if self.store.title != none {
-            set text(fill: self.colors.neutral-darkest, size: 1cm)
-            utils.call-or-display(self, self.store.title)
-          } else {
-            set text(fill: self.colors.neutral-darkest, size: 1cm)
-            utils.display-current-heading(level: 2)
-          })
+  set align(horizon)
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      header: header,
+      footer: footer,
+    ),
+  )
+  touying-slide(self: self, ..args)
+})
+
+#let headerTitleSlide(self) = {
+  set align(top)
+  show: components.cell.with(inset: 1cm)
+  grid(
+    columns: (1fr, 2fr, 1fr),
+    fill: none,
+    image("htwk.png", height: 1.2cm),
+    [],
+    image("fim.png", height: 1.2cm)
+  )
+}
+
+#let footerTitleSlide(self, info) = {
+  set text(fill: self.colors.neutral-darkest, size: 25pt)
+  show: components.cell.with(inset: 2cm)
+  grid(
+    columns: (1fr, 1fr),
+    rows: 10cm,
+    {
+      set par(
+        spacing: 0.5em,
+      )
+      set align(left + horizon)
+      if info.date != none {
+        block(display-date(self.info.date))
+      }
+      if info.authors-title-slide != none {
+        block(info.authors-title-slide)
+      }
+    },
+    [
+      #set align(right + horizon)
+      HTWK Leipzig
+    ]
+  )
+}
+
+#let title-slide(..args) = touying-slide-wrapper(self => {
+  let info = self.info + args.named()
+  let footerTitleSlideWithInfo(self) = footerTitleSlide(self, info);
+  let body = {
+    set text(font: self.store.font, weight: "light", size: 20pt)
+    set align(center + horizon)
+    text(size: 2em, fill: self.colors.neutral-darkest, weight: "bold", info.title)
+  }
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      header: headerTitleSlide,
+      footer: footerTitleSlideWithInfo
+    ),
+  )
+  let margin = (x: 4em, y: 2em)
+  let negative-padding = pad.with(x: -margin.x, y: 0em)
+  set page(
+    paper: "presentation-" + self.store.aspect-ratio,
+    header: headerTitleSlide(self),
+    header-ascent: 0em,
+    footer: footerTitleSlideWithInfo(self),
+    footer-descent: -8cm,
+    background: {
+      move(
+        dx: 1cm,
+        dy: 5cm,
+        grid(
+          columns: (1fr, 1fr),
+          rotate(
+            -16deg,
+            rect(fill: self.colors.primary, width: 6cm, height: 100%)
+          ),
+          rotate(
+            -16deg,
+            rect(fill: self.colors.primary, width: 6cm, height: 100%)
+          )
+        )
+      )
+    }
+  )
+  let container = rect.with(stroke: (dash: "dashed"), height: 100%, width: 100%, inset: 0pt)
+  let innerbox = rect.with(fill: rgb("#d0d0d0"))
+  body
+})
+
+#let htwk-outline(
+  title: "Inhalt",
+  ..args) = touying-slide-wrapper(self => {
+    outlineShown.step()
+    set text(font: self.store.font, weight: "light", size: 20pt)
+    set outline.entry(fill: none)
+    set text(fill: self.colors.neutral-dark)
+    show outline.entry.where(level: 1): it => {
+      if it.body() == [Quellen] {
+        []
+      } else {
+        [
+          + #link(
+            it.element.location(),
+            it.indented(it.prefix(), it.body()),
+          )
+
+        ]
+      }
+    }
+    let body = {
+      show: components.cell.with(inset: -1em)
+      show: pad.with(y: 1cm)
+      grid(
+        columns: (1cm, 1fr, 1cm),
+        rows: 10cm,
+        align: left + top,
+        gutter: .5cm,
+        fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
+        [],
+        {
+          move(dy: .5cm, components.adaptive-columns(
+            [
+              #outline(title: none, depth: 1)
+            ]
+          ))
         },
         []
       )
     }
-    let footer(self) = {
-      set align(bottom)
-      show: pad.with(1cm)
-      set text(fill: self.colors.neutral-darkest, size: .5em)
-      grid(
-        columns: (.9cm, .1cm, 1fr, 4cm),
-        align: left,
-        gutter: 5pt,
-        place(right, [
-          #text(size: 1cm, context utils.slide-counter.display())
-        ]),
-        line(start: (0%, 0%), angle: 90deg, length: .7cm, stroke: .5pt + rgb("#808080")),
-        [
-          #text(size: .3cm, self.info.authors.join(", ") + ",")
-          #text(size: .3cm, display-date(self.info.date)) \
-          #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title))
-        ],
-        place(right, [#image("htwk.png", height: .7cm)])
-      )
-    }
-    set align(horizon)
+    let headerWithoutColoredBars(self) = header(self, colorizeEdges: false, title: [
+      #set text(fill: self.colors.neutral-darkest, size: 1cm)
+      #utils.call-or-display(self, title)
+    ])
     self = utils.merge-dicts(
       self,
       config-page(
-        header: header,
+        header: headerWithoutColoredBars,
         footer: footer,
       ),
     )
-    touying-slide(self: self, ..args)
+    touying-slide(self: self, align(top, body), ..args)
   })
 
-  #let title-slide(..args) = touying-slide-wrapper(self => {
-    let info = self.info + args.named()
-    let header(self) = {
-      set align(top)
-      show: components.cell.with(inset: 1cm)
-      grid(
-        columns: (1fr, 2fr, 1fr),
-        fill: none,
-        image("htwk.png", height: 1.2cm),
-        [],
-        image("fim.png", height: 1.2cm)
-      )
-    }
-    let footer(self) = {
-      set text(fill: self.colors.neutral-darkest, size: 25pt)
-      show: components.cell.with(inset: 2cm)
-      grid(
-        columns: (1fr, 1fr),
-        rows: 10cm,
-        {
-          set par(
-            spacing: 0.5em,
-          )
-          set align(left + horizon)
-          if info.date != none {
-            block(display-date(self.info.date))
-          }
-          if info.authors-title-slide != none {
-            block(info.authors-title-slide)
-          }
-        },
-        [
-          #set align(right + horizon)
-          HTWK Leipzig
-        ]
-      )
-    }
-    let body = {
-      set text(font: self.store.font, weight: "light", size: 20pt)
-      set align(center + horizon)
-      text(size: 2em, fill: self.colors.neutral-darkest, weight: "bold", info.title)
-    }
-    self = utils.merge-dicts(
-      self,
+  #let htwk-theme(
+    aspect-ratio: "16-9",
+    font: "Arimo Nerd Font",
+    footer: none,
+    primaryColor: rgb("#009ee3"),
+    textColorLight: rgb("#ffffff"),
+    textColorDark: rgb("#000000"),
+    ..args,
+    body,
+  ) = {
+    set text(size: 20pt)
+
+    show: touying-slides.with(
       config-page(
-        header: header,
-        footer: footer
+        paper: "presentation-" + aspect-ratio,
+        margin: (top: 6em, bottom: 2em, x: 2em),
       ),
-    )
-    let margin = (x: 4em, y: 2em)
-    let negative-padding = pad.with(x: -margin.x, y: 0em)
-    set page(
-      paper: "presentation-" + self.store.aspect-ratio,
-      header: header(self),
-      header-ascent: 0em,
-      footer: footer(self),
-      footer-descent: -8cm,
-      background: {
-        move(
-          dx: 1cm,
-          dy: 5cm,
-          grid(
-            columns: (1fr, 1fr),
-            rotate(
-              -16deg,
-              rect(fill: self.colors.primary, width: 6cm, height: 100%)
-            ),
-            rotate(
-              -16deg,
-              rect(fill: self.colors.primary, width: 6cm, height: 100%)
-            )
-          )
-        )
-      }
-    )
-    let container = rect.with(stroke: (dash: "dashed"), height: 100%, width: 100%, inset: 0pt)
-    let innerbox = rect.with(fill: rgb("#d0d0d0"))
-    body
-  })
-
-  #let htwk-outline(
-    title: "Inhalt",
-    ..args) = touying-slide-wrapper(self => {
-      outlineShown.step()
-      // TODO deduplicate
-      set text(font: self.store.font, weight: "light", size: 20pt)
-      let header(self) = {
-        set align(top)
-        show: components.cell.with(inset: 1em)
-        headerOutline()
-        grid(
-          columns: (1cm, 1fr, 1cm),
-          rows: 2cm,
-          align: left + horizon,
-          gutter: .5cm,
-          fill: none,
-          [],
-          {
-            strong(
-              {
-                set text(fill: self.colors.neutral-darkest, size: 1cm)
-                utils.call-or-display(self, title)
-              }
-            )
-          },
-          []
-        )
-      }
-      let footer(self) = {
-        set align(bottom)
-        show: pad.with(1cm)
-        set text(fill: self.colors.neutral-darkest, size: .5em)
-        grid(
-          columns: (.9cm, .1cm, 1fr, 4cm),
-          align: left,
-          gutter: 5pt,
-          place(right, [
-            #text(size: 1cm, context utils.slide-counter.display())
-          ]),
-          line(start: (0%, 0%), angle: 90deg, length: .7cm, stroke: .5pt + rgb("#808080")),
-          [
-            #text(size: .3cm, self.info.authors.join(", ") + ",")
-            #text(size: .3cm, display-date(self.info.date)) \
-            #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title))
-          ],
-          place(right, [#image("htwk.png", height: .7cm)])
-        )
-      }
-      set outline.entry(fill: none)
-      set text(fill: self.colors.neutral-dark)
-      show outline.entry.where(level: 1): it => {
-        if it.body() == [Quellen] {
-          []
-        } else {
-          [
-            + #link(
-              it.element.location(),
-              it.indented(it.prefix(), it.body()),
-            )
-
-          ]
-        }
-      }
-      let body = {
-        show: components.cell.with(inset: -1em)
-        show: pad.with(y: 1cm)
-        grid(
-          columns: (1cm, 1fr, 1cm),
-          rows: 10cm,
-          align: left + top,
-          gutter: .5cm,
-          fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
-          [],
-          {
-            move(dy: .5cm, components.adaptive-columns(
-              [
-                #outline(title: none, depth: 1)
-              ]
-            ))
-          },
-          []
-        )
-      }
-      self = utils.merge-dicts(
-        self,
-        config-page(
-          header: header,
-          footer: footer,
-        ),
-      )
-      touying-slide(self: self, align(top, body), ..args)
-    })
-
-    #let htwk-theme(
-      aspect-ratio: "16-9",
-      font: "Arimo Nerd Font",
-      footer: none,
-      primaryColor: rgb("#009ee3"),
-      textColorLight: rgb("#ffffff"),
-      textColorDark: rgb("#000000"),
+      config-common(
+        slide-fn: slide,
+      ),
+      config-methods( alert: utils.alert-with-primary-color ),
+      config-colors(
+        primary: primaryColor,
+        neutral-lightest: textColorLight,
+        neutral-darkest: textColorDark,
+      ),
+      config-store(
+        title: none,
+        footer: footer,
+        font: font,
+        aspect-ratio: aspect-ratio
+      ),
       ..args,
-      body,
-    ) = {
-      set text(size: 20pt)
+    )
 
-      show: touying-slides.with(
-        config-page(
-          paper: "presentation-" + aspect-ratio,
-          margin: (top: 6em, bottom: 2em, x: 2em),
-        ),
-        config-common(
-          slide-fn: slide,
-        ),
-        config-methods( alert: utils.alert-with-primary-color ),
-        config-colors(
-          primary: primaryColor,
-          neutral-lightest: textColorLight,
-          neutral-darkest: textColorDark,
-        ),
-        config-store(
-          title: none,
-          footer: footer,
-          font: font,
-          aspect-ratio: aspect-ratio
-        ),
-        ..args,
-      )
-
-      body
-    }
+    body
+  }
