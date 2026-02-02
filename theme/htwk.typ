@@ -1,0 +1,422 @@
+#import "@preview/touying:0.6.1": *
+
+#let get-month-name(month) = {
+  let months = (
+  "Januar",
+  "Februar",
+  "März",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember"
+  )
+  return months.at(month - 1)
+}
+
+#let outlineShown = counter("outlineShown")
+
+#let display-date(date) = {
+  return str(date.day()) + ". " + get-month-name(date.month()) + " " + str(date.year())
+}
+
+#let headerOutline() = {
+    context {
+      set par(
+        spacing: .3cm
+      )
+      set text(size: .5cm)
+      let chapters = query(
+        heading.where(
+          level: 1,
+          outlined: true,
+        )
+      )
+      let slideCounts = chapters.map(c => {
+        let loc = c.location()
+        numbering(
+          loc.page-numbering(),
+          ..counter(page).at(loc),
+        )
+      })
+      for i in range(slideCounts.len()) {
+        if chapters.at(i).body == [Quellen] {
+          slideCounts.at(i) = -1
+        } else {
+          if i == slideCounts.len() - 1 {
+            slideCounts.at(i) = counter(page).final().at(0) - int(slideCounts.at(i))
+          } else {
+            slideCounts.at(i) = int(slideCounts.at(i + 1)) - int(slideCounts.at(i))
+          }
+        }
+      }
+      slideCounts = slideCounts.filter(n => n > 0)
+      chapters = chapters.filter(c => c.body != [Quellen])
+
+      let tmp = ()
+      let t = if int(outlineShown.display()) > 0 {2} else {1}
+      for (i, sc) in slideCounts.enumerate() {
+        tmp.push(range(t, t + int(sc)))
+        t += int(sc)
+      }
+      slideCounts = tmp
+
+      let all_lvl1 = query(heading.where(level: 1))
+      let curr_page = here().page()
+      let currentchapter = all_lvl1
+        .filter(h => h.location().page() <= curr_page)
+        .last(default: none)
+
+//         grid(
+//           columns: range(chapters.len()).map(_ => 1fr),
+//           align: left + top,
+//           ..range(chapters.len()).map(i => {
+//             let color = if currentchapter != none and chapters.at(i).body == currentchapter.body {black} else {gray}
+//             [
+//               #link(chapters.at(i).location(),
+//               [
+//                 #align(left)[
+//                 #text(fill: color, chapters.at(i).body)
+//               ]
+//               ])
+//               #grid(
+//                 columns: slideCounts.at(i).len(),
+//                 gutter: 3pt,
+//                 ..slideCounts.at(i).map(c => {
+//                   link(utils.current-heading().location(),
+//                   [#circle(
+//                     radius: .1cm,
+//                     stroke: color,
+//                     fill: if c == int(utils.slide-counter.display()) {color} else {none}
+//                   )
+//                 ]
+//               )
+//             })
+//           )
+//         ]
+//       })
+//     )
+
+        let space-between(items) = {
+          box(width: 100%)[
+            #for i in range(items.len()) {
+              items.at(i)
+              if i < items.len() - 1 { h(1fr) }
+            }
+          ]
+        }
+        space-between(
+          range(chapters.len()).map(i => {
+            let color = if currentchapter != none and chapters.at(i).body == currentchapter.body {black} else {gray}
+            [
+              #box()[
+                #link(chapters.at(i).location(),
+                [
+                  #align(left)[
+                    #text(fill: color, chapters.at(i).body)
+                  ]
+                ]
+              )
+              #grid(
+                columns: slideCounts.at(i).len(),
+                gutter: 3pt,
+                ..slideCounts.at(i).map(c => {
+                  link(utils.current-heading().location(),
+                  [#circle(
+                    radius: .1cm,
+                    stroke: color,
+                    fill: if c == int(utils.slide-counter.display()) {color} else {none}
+                  )
+                ]
+              )
+            })
+          )
+        ]
+        ]
+      })
+    )
+
+    
+  }
+}
+
+#let slide(title: auto, ..args) = touying-slide-wrapper(self => {
+  set list(marker: ([
+    #set text(fill: self.colors.primary)
+    –
+  ]))
+  set text(font: self.store.font, weight: "light", size: 20pt)
+  if title != auto {
+    self.store.title = title
+  }
+  // set page
+  let header(self) = {
+    set align(top)
+    show: components.cell.with(inset: 1em)
+    headerOutline()
+    grid(
+      columns: (1cm, 1fr, 1cm),
+      rows: 2cm,
+      align: left + horizon,
+      gutter: .5cm,
+        fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
+      [],
+      {
+        strong(
+          if self.store.title != none {
+            set text(fill: self.colors.neutral-darkest, size: 1cm)
+            utils.call-or-display(self, self.store.title)
+          } else {
+            set text(fill: self.colors.neutral-darkest, size: 1cm)
+            utils.display-current-heading(level: 2)
+          })
+      },
+      []
+    )
+  }
+  let footer(self) = {
+    set align(bottom)
+    show: pad.with(1cm)
+    set text(fill: self.colors.neutral-darkest, size: .5em)
+    grid(
+      columns: (.9cm, .1cm, 1fr, 4cm),
+      align: left,
+      gutter: 5pt,
+      place(right, [
+        #text(size: 1cm, context utils.slide-counter.display())
+      ]),
+      line(start: (0%, 0%), angle: 90deg, length: .7cm, stroke: .5pt + rgb("#808080")),
+      [
+        #text(size: .3cm, self.info.authors.join(", ") + ",")
+        #text(size: .3cm, display-date(self.info.date)) \
+        #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title))
+      ],
+      place(right, [#image("htwk.png", height: .7cm)])
+    )
+  }
+  set align(horizon)
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      header: header,
+      footer: footer,
+    ),
+  )
+  touying-slide(self: self, ..args)
+})
+
+#let title-slide(..args) = touying-slide-wrapper(self => {
+  let info = self.info + args.named()
+  let header(self) = {
+    set align(top)
+    show: components.cell.with(inset: 1cm)
+    grid(
+      columns: (1fr, 2fr, 1fr),
+      fill: none,
+    image("htwk.png", height: 1.2cm),
+    [],
+    image("fim.png", height: 1.2cm)
+    )
+  }
+  let footer(self) = {
+    set text(fill: self.colors.neutral-darkest, size: 25pt)
+    show: components.cell.with(inset: 2cm)
+    grid(
+      columns: (1fr, 1fr),
+      rows: 10cm,
+      {
+        set par(
+          spacing: 0.5em,
+        )
+        set align(left + horizon)
+        if info.date != none {
+          block(display-date(self.info.date))
+        }
+        if info.authors-title-slide != none {
+          block(info.authors-title-slide)
+        }
+      },
+      [
+        #set align(right + horizon)
+        HTWK Leipzig
+      ]
+    )
+  }
+  let body = {
+    set text(font: self.store.font, weight: "light", size: 20pt)
+    set align(center + horizon)
+    text(size: 2em, fill: self.colors.neutral-darkest, weight: "bold", info.title)
+  }
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      header: header,
+      footer: footer
+    ),
+  )
+  let margin = (x: 4em, y: 2em)
+  let negative-padding = pad.with(x: -margin.x, y: 0em)
+  set page(
+    paper: "presentation-" + self.store.aspect-ratio,
+    header: header(self),
+    header-ascent: 0em,
+    footer: footer(self),
+    footer-descent: -8cm,
+    background: {
+      move(
+      dx: 1cm,
+      dy: 5cm,
+      grid(
+        columns: (1fr, 1fr),
+        rotate(
+          -16deg,
+          rect(fill: self.colors.primary, width: 6cm, height: 100%)
+        ),
+        rotate(
+          -16deg,
+          rect(fill: self.colors.primary, width: 6cm, height: 100%)
+        )
+      )
+    )
+    }
+  )
+  let container = rect.with(stroke: (dash: "dashed"), height: 100%, width: 100%, inset: 0pt)
+  let innerbox = rect.with(fill: rgb("#d0d0d0"))
+  body
+  // touying-slide(self: self, body, ..args)
+})
+
+#let htwk-outline(
+  title: "Inhalt",
+  ..args) = touying-slide-wrapper(self => {
+  outlineShown.step()
+  // TODO deduplicate
+  set text(font: self.store.font, weight: "light", size: 20pt)
+  let header(self) = {
+    set align(top)
+    show: components.cell.with(inset: 1em)
+    headerOutline()
+    grid(
+      columns: (1cm, 1fr, 1cm),
+      rows: 2cm,
+      align: left + horizon,
+      gutter: .5cm,
+        fill: none,
+      [],
+      {
+        strong(
+          {
+            set text(fill: self.colors.neutral-darkest, size: 1cm)
+            utils.call-or-display(self, title)
+          }
+        )
+      },
+      []
+    )
+  }
+  let footer(self) = {
+    set align(bottom)
+    show: pad.with(1cm)
+    set text(fill: self.colors.neutral-darkest, size: .5em)
+    grid(
+      columns: (.9cm, .1cm, 1fr, 4cm),
+      align: left,
+      gutter: 5pt,
+      place(right, [
+        #text(size: 1cm, context utils.slide-counter.display())
+      ]),
+      line(start: (0%, 0%), angle: 90deg, length: .7cm, stroke: .5pt + rgb("#808080")),
+      [
+        #text(size: .3cm, self.info.authors.join(", ") + ",")
+        #text(size: .3cm, display-date(self.info.date)) \
+        #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title))
+      ],
+      place(right, [#image("htwk.png", height: .7cm)])
+    )
+  }
+  set outline.entry(fill: none)
+  set text(fill: self.colors.neutral-dark)
+  show outline.entry.where(level: 1): it => {
+    if it.body() == [Quellen] {
+      []
+    } else {
+      [
+        + #link(
+        it.element.location(),
+        it.indented(it.prefix(), it.body()),
+      )
+
+      ]
+    }
+}
+  let body = {
+    show: components.cell.with(inset: -1em)
+    show: pad.with(y: 1cm)
+    grid(
+      columns: (1cm, 1fr, 1cm),
+      rows: 10cm,
+      align: left + top,
+      gutter: .5cm,
+      fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
+      [],
+      {
+      move(dy: .5cm, components.adaptive-columns(
+        [
+        #outline(title: none, depth: 1)
+      ]
+      ))
+      },
+      []
+    )
+  }
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      header: header,
+      footer: footer,
+    ),
+  )
+  touying-slide(self: self, align(top, body), ..args)
+})
+
+#let htwk-theme(
+  aspect-ratio: "16-9",
+  font: "Arimo Nerd Font",
+  footer: none,
+  primaryColor: rgb("#009ee3"),
+  textColorLight: rgb("#ffffff"),
+  textColorDark: rgb("#000000"),
+  ..args,
+  body,
+) = {
+  set text(size: 20pt)
+
+  show: touying-slides.with(
+    config-page(
+      paper: "presentation-" + aspect-ratio,
+      margin: (top: 6em, bottom: 2em, x: 2em),
+    ),
+    config-common(
+      slide-fn: slide,
+    ),
+    config-methods( alert: utils.alert-with-primary-color ),
+    config-colors(
+      primary: primaryColor,
+      neutral-lightest: textColorLight,
+      neutral-darkest: textColorDark,
+    ),
+    config-store(
+      title: none,
+      footer: footer,
+      font: font,
+      aspect-ratio: aspect-ratio
+    ),
+    ..args,
+  )
+
+  body
+}
