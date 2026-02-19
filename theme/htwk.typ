@@ -129,7 +129,9 @@
     [
       #text(size: .3cm, self.info.authors.join(", ") + ",")
       #text(size: .3cm, display-date(self.info.date)) \
-      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title))
+      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title
+        + if self.info.subtitle != none [ \- #self.info.subtitle] else []
+      ))
     ],
     place(right, [#image("htwk.png", height: .7cm)])
   )
@@ -234,6 +236,10 @@
     set text(font: self.store.font, weight: "light", size: 20pt)
     set align(center + horizon)
     text(size: 2em, fill: self.colors.neutral-darkest, weight: "bold", info.title)
+    if info.subtitle != none {
+      linebreak()
+      text(size: 1em, fill: self.colors.neutral-darkest, weight: "bold", info.subtitle)
+    }
   }
   self = utils.merge-dicts(
     self,

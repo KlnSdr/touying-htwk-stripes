@@ -8,6 +8,7 @@
   font: "Arimo",
   config-info(
     title: [Design by Contract],
+    subtitle: [Softwareengineering],
     authors: ("Author A", "Author B", "Author C"),
     authors-title-slide:
     [
