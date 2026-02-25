@@ -36,6 +36,34 @@
         outlined: true,
       )
     )
+
+    let slides_per_chapter = chapters.enumerate().map((enum) => {
+      let i = enum.first()
+      let ch = enum.last()
+      let start = ch.location()
+
+      let next_ch = if i + 1 < chapters.len() {
+        chapters.at(i + 1)
+      } else {
+        none
+      }
+
+      let slides = if next_ch == none {
+        query(
+          heading.where(level: 2).after(start)
+        )
+      } else {
+        query(
+          heading
+          .where(level: 2)
+          .after(start)
+          .before(next_ch.location())
+        )
+      }
+
+      slides
+    })
+
     let slideCounts = chapters.map(c => {
       let loc = c.location()
       numbering(
@@ -92,19 +120,24 @@
             ]
           )
           #grid(
-            columns: slideCounts.at(i).len(),
+            columns: slides_per_chapter.at(i).len(),
             gutter: 3pt,
-            ..slideCounts.at(i).map(c => {
-              link(utils.current-heading().location(),
-              [#circle(
-                radius: .1cm,
-                stroke: color,
-                fill: if c == int(utils.slide-counter.display()) {color} else {none}
+            ..slides_per_chapter.at(i).zip(slideCounts.at(i)).map(zipped => {
+              let slide = zipped.first()
+              let c = zipped.last()
+              let target = slide.location()
+              link(
+                target,
+                [
+                  #circle(
+                    radius: .1cm,
+                    stroke: color,
+                    fill: if c == int(utils.slide-counter.display()) {color} else {none}
+                  )
+                ]
               )
-            ]
+            })
           )
-        })
-      )
     ]
   ]
 })
