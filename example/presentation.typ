@@ -1,5 +1,5 @@
 #import "@preview/touying:0.6.1": *
-#import "/theme/htwk.typ": *
+#import "/src/lib.typ": *
 
 #set text(lang: "de")
 
