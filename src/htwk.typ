@@ -166,7 +166,7 @@
         + if self.info.subtitle != none [ \- #self.info.subtitle] else []
       ))
     ],
-    place(right, [#image("htwk.png", height: .7cm)])
+    place(right, [#image(self.store.logoInstitution, height: .7cm)])
   )
 }
 
@@ -231,9 +231,9 @@
   grid(
     columns: (1fr, 2fr, 1fr),
     fill: none,
-    image("htwk.png", height: 1.2cm),
+    image(self.store.logoInstitution, height: 1.2cm),
     [],
-    image("fim.png", height: 1.2cm)
+    image(self.store.logoFaculty, height: 1.2cm)
   )
 }
 
@@ -373,6 +373,8 @@
     primaryColor: rgb("#009ee3"),
     textColorLight: rgb("#ffffff"),
     textColorDark: rgb("#000000"),
+    logoInstitution: none,
+    logoFaculty: none,
     ..args,
     body,
   ) = {
@@ -396,7 +398,9 @@
         title: none,
         footer: footer,
         font: font,
-        aspect-ratio: aspect-ratio
+        aspect-ratio: aspect-ratio,
+        logoInstitution: logoInstitution,
+        logoFaculty: logoFaculty
       ),
       ..args,
     )

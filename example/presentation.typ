@@ -21,6 +21,8 @@
     date: datetime.today(),
     institution: [HTWK Leipzig],
   ),
+  logoInstitution: "../example/assets/htwk.png",
+  logoFaculty: "../example/assets/fim.png",
   config-common(handout: false)
 )
 
