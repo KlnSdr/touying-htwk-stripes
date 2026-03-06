@@ -166,7 +166,7 @@
         + if self.info.subtitle != none [ \- #self.info.subtitle] else []
       ))
     ],
-    place(right, [#image(self.store.logoInstitution, height: .7cm)])
+    place(right, if self.store.logoInstitution != none [#image(self.store.logoInstitution, height: .7cm)] else [])
   )
 }
 
@@ -231,9 +231,9 @@
   grid(
     columns: (1fr, 2fr, 1fr),
     fill: none,
-    image(self.store.logoInstitution, height: 1.2cm),
+    if self.store.logoInstitution != none [#image(self.store.logoInstitution, height: 1.2cm)] else [],
     [],
-    image(self.store.logoFaculty, height: 1.2cm)
+    if self.store.logoFaculty != none [#image(self.store.logoFaculty, height: 1.2cm)] else [],
   )
 }
 
