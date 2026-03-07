@@ -1,0 +1,831 @@
+
+% Journals
+
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
+
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Proceedings of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
+
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
+
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
+
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Proceedings of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
+
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Proceedings of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
+
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
+
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
+
+% Publishers % ================================================= |
+
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
+
+%Entries
+
+
+
+
+
+
+% Journals
+
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
+
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Proceedings of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
+
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
+
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
+
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Proceedings of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
+
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Proceedings of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
+
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
+
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
+
+% Publishers % ================================================= |
+
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
+
+%Entries
+
+
+@article{hug2001spezifikation,
+  title={Spezifikation durch Vertrag-eine Basistechnologie f{\"u}r eBusiness},
+  author={Hug, Karlheinz},
+  year={2001}
+}
+
+
+@inproceedings{fahndrich2010static,
+  title={Static verification for code contracts},
+  author={F{\"a}hndrich, Manuel},
+  booktitle={International Static Analysis Symposium},
+  pages={2--5},
+  year={2010},
+  organization={Springer}
+}
+
+@INPROCEEDINGS{4137435,
+  author={Tantivongsathaporn, Judy and Stearns, Daniel},
+  booktitle={2006 13th Asia Pacific Software Engineering Conference (APSEC'06)},
+  title={An Experience With Design by Contract},
+  year={2006},
+  volume={},
+  number={},
+  pages={335-341},
+  keywords={Contracts;Valves;Software quality;Robustness;Computer industry;Data analysis;Software testing;Reliability engineering;Software systems;Programming},
+  doi={10.1109/APSEC.2006.22}}
+
+@techreport{waidner2013entwicklung,
+  title={Entwicklung sicherer Software durch Security by Design},
+  author={Waidner, Michael and Backes, Michael and M{\"u}ller-Quade, J{\"o}rn and Bodden, Eric and Schneider, Markus and Kreutzer, Michael and Mezini, Mira and Hammer, Christian and Zeller, Andreas and Achenbach, Dirk and others},
+  year={2013},
+  institution={SIT Technical Reports, SIT-TR-2013-01. Hrsg: Waidner, Michael}
+}
+
+
+@inproceedings{todorov2024design,
+  title={Design by contract formal verification for automotive embedded software robustness},
+  author={Todorov, Vassil and Mihalache, Alin and Azil, Azzedine and Hernandez, Armando},
+  booktitle={ERTS 2024},
+  year={2024}
+}
+
+@inproceedings{inproceedings,
+author = {Flanagan, Cormac and Leino, K Rustan M and Lillibridge, Mark and Nelson, Greg and Saxe, James and Stata, Raymie},
+year = {2002},
+month = {05},
+pages = {},
+title = {Extended Static Checking for Java},
+volume = {37},
+journal = {ACM SIGPLAN Notices},
+doi = {10.1145/512529.512558}
+}
+
+
+@article{Agostinho2008An,
+  title={An Aspect for Design by Contract in Java},
+  author={Sérgio Agostinho and Pedro Guerreiro and Hugo Taborda},
+  year={2008},
+  pages={119-128},
+  doi={10.5220/0001743001190128}
+}
+
+@article{Cimatti2012A,
+  title={A Property-Based Proof System for Contract-Based Design},
+  author={A. Cimatti and S. Tonetta},
+  journal={2012 38th Euromicro Conference on Software Engineering and Advanced Applications},
+  year={2012},
+  pages={21-28},
+  doi={10.1109/seaa.2012.68}
+}
+
+@article{Cimatti2015Contractsrefinement,
+  title={Contracts-refinement proof system for component-based embedded systems},
+  author={A. Cimatti and S. Tonetta},
+  journal={Sci. Comput. Program.},
+  year={2015},
+  volume={97},
+  pages={333-348},
+  doi={10.1016/j.scico.2014.06.011}
+}
+
+@article{Dragomir2017Contractbased,
+  title={Contract-based modeling and verification of timed safety requirements within SysML},
+  author={I. Dragomir and Iulian Ober and C. Percebois},
+  journal={Software \& Systems Modeling},
+  year={2017},
+  volume={16},
+  pages={587-624},
+  doi={10.1007/s10270-015-0481-1}
+}
+
+@article{endres2024nl2postcond,
+  author       = {Madeline Endres and Sarah Fakhoury and Saikat Chakraborty and Shuvendu K. Lahiri},
+  title        = {Can Large Language Models Transform Natural Language Intent into Formal Method Postconditions?},
+  journal      = {Proceedings of the ACM on Software Engineering},
+  volume       = {1},
+  number       = {FSE},
+  pages        = {1889--1912},
+  year         = {2024},
+  month        = {jul},
+  publisher    = {Association for Computing Machinery (ACM)},
+  doi          = {10.1145/3660791},
+  url          = {https://dl.acm.org/doi/10.1145/3660791}
+}
+
+@inproceedings{wotawa2021verificationAI,
+  title     = {On the Use of Available Testing Methods for Verification \& Validation of AI-based Software and Systems},
+  author    = {Wotawa, Franz},
+  booktitle = {Proceedings of the AAAI Workshop on Artificial Intelligence Safety (SafeAI)},
+  year      = {2021},
+  pages     = {1--6},
+  url       = {http://ceur-ws.org/Vol-2808/Paper_29.pdf}
+}
+
+@inproceedings{meijer2024contractML,
+  title     = {Contract-based Validation of Conceptual Design Bugs for Engineering Complex Machine Learning Software},
+  author    = {Meijer, Willem},
+  booktitle = {Proceedings of the ACM/IEEE 27th International Conference on Model Driven Engineering Languages and Systems (MODELS)},
+  year      = {2024},
+  doi       = {10.1145/3652620.3688201}
+}
+
+@inproceedings{ahmed2023dbcDL,
+  title     = {Design by Contract for Deep Learning APIs},
+  author    = {Ahmed, Shibbir and Imtiaz, Sayem Mohammad and Khairunnesa, Samatha Syeda and Cruz, Breno Dantas and Rajan, Hridesh},
+  booktitle = {Proceedings of the 31st ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE)},
+  year      = {2023},
+  doi       = {10.1145/3611643.3616247}
+}
+
+@article{saravanan2025genAISE,
+  title   = {Generative AI in Software Engineering: Revolutionizing Code Generation and Debugging},
+  author  = {Saravanan, V. and Kavitha, S. and Ravi, S. and Seetha, A. and Rambabu, Ch. and Kanth, Tatiraju V. Rajani},
+  journal = {International Journal of Computer Engineering and Science (IJCESEN)},
+  volume  = {11},
+  number  = {2},
+  year    = {2025},
+  doi     = {10.22399/ijcesen.1718}
+}
+
+@article{lim2025contractadherence,
+  title   = {Do Large Language Models Respect Contracts? Evaluating and Enforcing Contract-Adherence in Code Generation},
+  author  = {Lim, Soohan and Hahn, Joonghyuk and Park, Hyunwoo and Ko, Sang-Ki and Han, Yo-Sub},
+  journal = {arXiv preprint arXiv:2510.12047},
+  year    = {2025},
+  doi     = {10.48550/arXiv.2510.12047},
+  url     = {https://arxiv.org/abs/2510.12047}
+}
+
+@article{councilman2025forver,
+  title   = {Towards Formal Verification of LLM-Generated Code from Natural Language Prompts},
+  author  = {Councilman, Aaron and Fu, David Jiahao and Gupta, Aryan and Wang, Chengxiao and Grove, David and Wang, Yu-Xiong and Adve, Vikram},
+  journal = {arXiv preprint arXiv:2507.13290},
+  year    = {2025},
+  doi     = {10.48550/arXiv.2507.13290},
+  url     = {https://arxiv.org/abs/2507.13290}
+}
+
+@inproceedings{lim2025contracteval,
+  title     = {ContractEval: A Benchmark for Evaluating Contract-Satisfying Assertions in Code Generation},
+  author    = {Lim, Soohan and Hahn, Joonghyuk and Park, Hyunwoo and Ko, Sang-Ki and Han, Yo-Sub},
+  year      = {2025},
+  url       = {https://api.semanticscholar.org/CorpusID:282064465}
+}
+
+@inproceedings{ramler2024industrialAIcoding,
+  title     = {Industrial Experience Report on AI-Assisted Coding in Professional Software Development},
+  author    = {Ramler, Rudolf and Moser, Michael and Fischer, Lukas and Nissl, Markus and Heinzl, Ren{\'e}},
+  booktitle = {Proceedings of LLM4Code@ICSE 2024},
+  year      = {2024},
+  pages     = {1--7},
+  doi       = {10.1145/3643795.3648377},
+  url       = {https://doi.org/10.1145/3643795.3648377}
+}
+
+@inproceedings{ostroff2004agileSpecDriven,
+  author    = {Ostroff, J. S. and Makalsky, D. and Paige, R. F.},
+  title     = {Agile Specification-Driven Development},
+  booktitle = {Lecture Notes in Computer Science (LNCS)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {3092},
+  pages     = {104--112},
+  year      = {2004},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-540-24853-8_12},
+  url       = {https://doi.org/10.1007/978-3-540-24853-8_12}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@article{Goos1983The,
+  title={The Programming Language Ada},
+  author={G. Goos and J. Hartmanis and W. Brauer and P. B. Hansen and D. Gries and C. Moler and G. Seegmüller and J. Stoer and N. Wirth},
+  year={1983},
+  volume={106},
+  doi={10.1007/3-540-10693-6}
+}
+
+
+@article{Liu2004,
+  author    = {Hongming Liu and Lizhang Qin and Jing Wang and Naveen Vemuri and Xiaoping Jia},
+  title     = {Static and Dynamic Contract Verifiers For Java},
+  institution = {School of Computer Science, Telecommunication and Information Systems, DePaul University},
+  address   = {Chicago, Illinois, USA},
+  year      = {2004},
+  note      = {Technical Report}
+}
+
+@article{Ichbiah1979Rationale,
+  title={Rationale for the design of the Ada programming language},
+  author={J. Ichbiah and B. Krieg-Brueckner and B. Wichmann and J. Barnes and O. Roubine and J. Heliard},
+  journal={ACM SIGPLAN Notices},
+  year={1979},
+  volume={14},
+  pages={1-261},
+  doi={10.1145/956653.956654}
+}
+
+@article{Schonberg1992A,
+  title={A technical tour of Ada},
+  author={E. Schonberg and M. Gerhard and Charlene Hayden},
+  journal={Commun. ACM},
+  year={1992},
+  volume={35},
+  pages={43-52},
+  doi={10.1145/138844.138846}
+}
+
+@ARTICLE{DbCImproveSoftVigilance,
+  author={Le Traon, Y. and Baudry, B. and Jezequel, J.-M.},
+  journal={IEEE Transactions on Software Engineering}, 
+  title={Design by Contract to Improve Software Vigilance}, 
+  year={2006},
+  volume={32},
+  number={8},
+  pages={571-586},
+  keywords={Contracts;Fault detection;Embedded software;Formal specifications;Mathematical model;Object oriented modeling;Runtime;Software quality;Software measurement;Measurement standards;Object-oriented design methods;programming by contract;diagnostics;metrics.},
+  doi={10.1109/TSE.2006.79}
+}
+
+@article{Meyer1992Applying,
+  title={Applying 'design by contract'},
+  author={B. Meyer},
+  journal={Computer},
+  year={1992},
+  volume={25},
+  pages={40-51},
+  doi={10.1109/2.161279}
+}
+
+@article{ApplInvar,
+  author = {Savidis, Anthony},
+  title = {Application invariants: Design by Contract augmented with deployment correctness logic},
+  journal = {Software: Practice and Experience},
+  volume = {36},
+  number = {3},
+  pages = {255-282},
+  keywords = {Design by Contract, defensive programming, embedded correctness checking, application invariants},
+  doi = {https://doi.org/10.1002/spe.695},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/spe.695},
+  eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/spe.695},
+  year = {2006}
+}
+
+@incollection{EMERSON1990995,
+  title = {CHAPTER 16 - Temporal and Modal Logic},
+  editor = {JAN {VAN LEEUWEN}},
+  booktitle = {Formal Models and Semantics},
+  publisher = {Elsevier},
+  address = {Amsterdam},
+  pages = {995-1072},
+  year = {1990},
+  series = {Handbook of Theoretical Computer Science},
+  isbn = {978-0-444-88074-1},
+  doi = {https://doi.org/10.1016/B978-0-444-88074-1.50021-4},
+  url = {https://www.sciencedirect.com/science/article/pii/B9780444880741500214},
+  author = {E. Allen EMERSON}
+}
+
+@techreport{LeavensCheon2006JMLDbC,
+  author       = {Gary T. Leavens and Yoonsik Cheon},
+  title        = {Design by Contract with JML},
+  institution  = {Department of Computer Science, Iowa State University and University of Texas at El Paso},
+  year         = {2006},
+  month        = {September},
+  day          = {28},
+}
+
+
+@misc{KongshContract,
+  title = "Contract-Based Software Development: Class Design by Contract",
+  abstract = "This lecture note introduces the foundations of contract-based development in an object-oriented setting. We introduce the six fundamental principles using motivating examples in JML (Java Modeling Language), and introduce the concepts of \textbackslash{}emph\{type invariants\} and \textbackslash{}emph\{representation invariants\}. ",
+  author = "Simon Kongsh{\o}j",
+  year = "2016",
+  language = "English",
+  type = "Other",
+}
+
+@inproceedings{Todorov2024,
+  author = {Todorov, Vassil and Mihalache, Alin and Azil, Azzedine and Hernandez, Armando},
+  title = {Design by contract formal verification for automotive embedded software robustness},
+  booktitle = {Proceedings of ERTS 2024},
+  organization = {SEE and 3AF associations},
+  address = {Toulouse, France},
+  month = {June},
+  year = {2024},
+  howpublished = {HAL Archives},
+  url = {https://hal.science/hal-05028176},
+  note = {HAL Id: hal-05028176}
+}
+
+@article{Dijkstra1975,
+  author  = {Edsger W. Dijkstra},
+  title   = {Guarded Commands, Nondeterminacy and Formal Derivation of Programs},
+  journal = {Communications of the ACM},
+  volume  = {18},
+  number  = {8},
+  pages   = {453--457},
+  year    = {1975},
+  month   = aug,
+  doi     = {10.1145/360933.360975},
+  url     = {https://doi.org/10.1145/360933.360975}
+}
+
+
+@article{LessonsOfAriane,
+  author={Jazequel, J.-M. and Meyer, B.},
+  journal={Computer},
+  title={Design by contract: the lessons of Ariane},
+  year={1997},
+  volume={30},
+  number={1},
+  pages={129-130},
+  keywords={Contracts;Software testing;System testing;Computer errors;Protection;Performance analysis;Delay;Computer crashes;Documentation;Software engineering},
+  doi={10.1109/2.562936}
+}
+
+@article{Meyer1986Genericity,
+  title={Genericity versus inheritance},
+  author={B. Meyer},
+  year={1986},
+  pages={391-405},
+  doi={10.1145/28697.28738}
+}
+
+@article{Meyer1988Eiffel,
+  title={Eiffel: A language and environment for software engineering},
+  author={B. Meyer},
+  journal={J. Syst. Softw.},
+  year={1988},
+  volume={8},
+  pages={199-246},
+  doi={10.1016/0164-1212(88)90022-2}
+}
+
+@article{Meyer1987Eiffel,
+  title={Eiffel: programming for reusability and extendibility},
+  author={B. Meyer},
+  journal={ACM SIGPLAN Notices},
+  year={1987},
+  volume={22},
+  pages={85-94},
+  doi={10.1145/24686.24694}
+}
+
+@article{Meyer1987Eiffel2,
+  title={EIFFEL: Object-Oriented Design for Software Engineering},
+  author={B. Meyer and Jean-Marc Nerson and M. Matsuo},
+  year={1987},
+  pages={221-229},
+  doi={10.1007/bfb0022115}
+}
+
+@online{AutonomousDrivingSocietyByte,
+  author    = {{SocietyByte}},
+  title     = {Autonomous Driving: Between Attention and Distraction},
+  year      = {2021},
+  url       = {https://www.societybyte.swiss/en/2021/07/14/autonomous-driving-between-attention-and-distraction/},
+  urldate   = {2026-01-07}
+}
+
+@misc{esa_ariane5_explosion_2009,
+  title        = {Explosion of first Ariane 5 flight, June 4, 1996},
+  author       = {{European Space Agency (ESA)}},
+  year         = {2009},
+  month        = sep,
+  howpublished = {\url{https://www.esa.int/ESA_Multimedia/Images/2009/09/Explosion_of_first_Ariane_5_flight_June_4_1996}},
+  note         = {ESA Standard Licence; published on 17 September 2009; accessed 19 January 2026},
+}
+
+@misc{nasa_mars_climate_orbiter,
+  title        = {Mars Climate Orbiter},
+  author       = {{NASA Science}},
+  year         = {1998},
+  howpublished = {\url{https://science.nasa.gov/mission/mars-climate-orbiter/}},
+  note         = {Accessed: 19 January 2026},
+}
+
+@misc{chm_ada_lovelace,
+  title        = {Ada Lovelace},
+  author       = {{Computer History Museum}},
+  year         = {1838},
+  howpublished = {\url{https://www.computerhistory.org/babbage/adalovelace/}},
+  note         = {Accessed: 20 January 2026},
+}
+
+@article{Joshua2025The,title={The Evolution of Software Engineering: From Prehistoric Beginnings to the Age of Artificial Intelligence},author={Jonah Vincent Joshua and Diosdado Asumu Ndong Andeme},journal={International Journal of Computer and Information Technology(2279-0764)},year={2025},doi={10.24203/8rbykd84}}
+

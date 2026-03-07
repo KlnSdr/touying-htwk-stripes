@@ -23,10 +23,11 @@
   ),
   logoInstitution: image("assets/htwk.png"),
   logoFaculty: image("assets/fim.png"),
+  sourcesTitle: "Quellen",
   config-common(handout: false)
 )
 
-#title-slide()
+#htwk-title-slide()
 
 == Outline <touying:hidden>
 #htwk-outline()
@@ -35,4 +36,7 @@
 #include "slides/history.typ"
 #include "slides/basics.typ"
 #include "slides/zusammenfassung.typ"
-#title-slide()
+
+#htwk-sources(title: "Quellen", bibliography(title: none,"/example/sources.bib"))
+
+#htwk-title-slide()

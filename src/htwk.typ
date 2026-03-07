@@ -28,7 +28,7 @@
   return str(date.day()) + ". " + get-month-name(date.month()) + " " + str(date.year())
 }
 
-#let headerOutline() = {
+#let headerOutline(self) = {
   context {
     set par(
       spacing: .3cm
@@ -76,7 +76,7 @@
       )
     })
     for i in range(slideCounts.len()) {
-      if chapters.at(i).body == [Quellen] {
+      if chapters.at(i).body == [#self.store.sourcesTitle] {
         slideCounts.at(i) = -1
       } else {
         if i == slideCounts.len() - 1 {
@@ -87,7 +87,7 @@
       }
     }
     slideCounts = slideCounts.filter(n => n > 0)
-    chapters = chapters.filter(c => c.body != [Quellen])
+    chapters = chapters.filter(c => c.body != [#self.store.sourcesTitle])
 
     let tmp = ()
     let t = if int(outlineShown.display()) > 0 {2} else {1}
@@ -177,7 +177,7 @@
 #let header(self, colorizeEdges: true, title: none) = {
   set align(top)
   show: components.cell.with(inset: 1em)
-  headerOutline()
+  headerOutline(self)
   grid(
     columns: (1cm, 1fr, 1cm),
     rows: 2cm,
@@ -266,7 +266,7 @@
   )
 }
 
-#let title-slide(..args) = touying-slide-wrapper(self => {
+#let htwk-title-slide(..args) = touying-slide-wrapper(self => {
   let info = self.info + args.named()
   let footerTitleSlideWithInfo(self) = footerTitleSlide(self, info);
   let body = {
@@ -324,7 +324,7 @@
     set outline.entry(fill: none)
     set text(fill: self.colors.neutral-dark)
     show outline.entry.where(level: 1): it => {
-      if it.body() == [Quellen] {
+      if it.body() == [#self.store.sourcesTitle] {
         []
       } else {
         [
@@ -370,6 +370,14 @@
     touying-slide(self: self, align(top, body), ..args)
   })
 
+  #let htwk-sources(title: "Quellen", content) = {
+    [
+      = #title
+      == #title
+      #content
+    ]
+  }
+
   #let htwk-theme(
     aspect-ratio: "4-3",
     font: "New Computer Modern",
@@ -378,6 +386,7 @@
     textColorDark: rgb("#000000"),
     logoInstitution: none,
     logoFaculty: none,
+    sourcesTitle: "Quellen",
     ..args,
     body,
   ) = {
@@ -401,7 +410,8 @@
         font: font,
         aspect-ratio: aspect-ratio,
         logoInstitution: logoInstitution,
-        logoFaculty: logoFaculty
+        logoFaculty: logoFaculty,
+        sourcesTitle: sourcesTitle
       ),
       ..args,
     )

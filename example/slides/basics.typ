@@ -15,6 +15,9 @@
     === Voraussetzungen #uncover("5-")[\= Preconditions]
     - $"balance" >= "amount"$
     - $"amount > 0"$
+
+    @DbCImproveSoftVigilance
+    @Meyer1992Applying
     #pause
     === Garantien #uncover("6-")[\= Postcondition]
     - $"balance" = "old balance" - "amount"$
