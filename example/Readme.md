@@ -2,4 +2,4 @@ This example uses the [Arimo Nerd Font](https://github.com/ryanoasis/nerd-fonts/
 
 To build it yourself run `make build-example` or `make watch-example` in the repository root.
 
-<!-- todo screenshots -->
+![An image of all 6 slides of the example presentation](../assets/exampleSlidesCombined.png)

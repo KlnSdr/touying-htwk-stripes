@@ -9,7 +9,7 @@
 
 The [example folder](https://github.com/klnsdr/touying-htwk-stripes/tree/main/example) contains a simple example showcasing the usage of the theme.
 
-<!-- todo image -->
+![An image of all 6 slides of the example presentation](assets/exampleSlidesCombined.png)
 
 ## Usage
 
