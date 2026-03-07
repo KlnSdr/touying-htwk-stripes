@@ -169,7 +169,7 @@
     [
       #text(size: .3cm, self.store.authors.join(", ") + ",")
       #text(size: .3cm, display-date(date: self.store.date, useCustomDate: self.store.customDate)) \
-      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.store.title
+      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.store.presentationTitle
         + if self.store.subtitle != none [ \- #self.store.subtitle] else []
       ))
     ],
@@ -274,7 +274,7 @@
   let body = {
     set text(font: self.store.font, weight: "light", size: 20pt)
     set align(center + horizon)
-    text(size: 2em, fill: self.colors.neutral-darkest, weight: "bold", info.title)
+    text(size: 2em, fill: self.colors.neutral-darkest, weight: "bold", info.presentationTitle)
     if info.subtitle != none {
       linebreak()
       text(size: 1em, fill: self.colors.neutral-darkest, weight: "bold", info.subtitle)
@@ -414,13 +414,14 @@
         neutral-darkest: textColorDark,
       ),
       config-store(
+        title: none,
         footer: footer,
         font: font,
         aspect-ratio: aspect-ratio,
         logoInstitution: logoInstitution,
         logoFaculty: logoFaculty,
         sourcesTitle: sourcesTitle,
-        title: title,
+        presentationTitle: title,
         subtitle: subtitle,
         authors: authors,
         authors-title-slide: authors-title-slide,

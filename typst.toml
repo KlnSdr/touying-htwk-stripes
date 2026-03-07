@@ -6,7 +6,7 @@ authors = [
   "KlnSdr"
 ]
 license = "MIT"
-description = "Touying theme inspired by the presentation template of Leipzig University of Applied Sciences (HTWK)"
+description = "Touying theme inspired by the presentation template of Leipzig University of Applied Sciences (HTWK Leipzig)"
 repository = "https://github.com/klnsdr/touying-htwk-stripes"
 keywords = ["touying", "htwk", "leipzig", "presentation", "slides", "lecture", "university", "theme"]
 categories = ["presentation"]
