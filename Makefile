@@ -12,7 +12,7 @@ image-from-example:
 	rm slide*.png
 
 create-thumbnail:
-	typst compile --root . template/template.typ --format png --pages 1 assets/thumb.png
+	typst compile --root . template/template.typ --format png --pages 1 assets/thumbnail.png
 
 VERSION ?=
 create-release:
@@ -21,6 +21,8 @@ create-release:
 	else \
 		VERSION="$(VERSION)"; \
 	fi; \
+	make image-from-example; \
+	make create-thumbnail; \
 	cd /tmp; \
 	git clone --depth 1 --no-checkout --filter="tree:0" git@github.com:KlnSdr/packages; \
 	cd packages; \
