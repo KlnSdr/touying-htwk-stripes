@@ -51,10 +51,38 @@ World
 
 ### htwk-stripes-theme
 
+Configures the theme and touying.
+
+Example call:
+
+```typst
+#show: htwk-stripes-theme.with(
+  aspect-ratio: "4-3",
+  font: "Arimo",
+  title: [Title],
+  subtitle: [Subtitle],
+  authors: ("Author A", "Author B", "Author C"),
+  authors-title-slide:
+  [
+    Author A
+    #linebreak()
+    Author B
+    #linebreak()
+    Author C
+  ],
+  customDate: false,
+  date: datetime.today(),
+  institution: [University of Example],
+  logoInstitution: image("assets/uoe.svg"),
+  logoFaculty: image("assets/foe.svg"),
+  sourcesTitle: "Bibliography"
+)
+```
+
 | Name                | Description                                                                                                                                                                                                                  | Type               | Default              |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- |
 | title               | Sets the title of the presentation. Used on the title slide and in the footer of each slide.                                                                                                                                 | str\| content      | `""`                 |
-| subtitle            | Sets the subtitle of the presentation. Used on the title slide and in the footer of each slide. If `subtitle` is set the footer will containt `<title> - <subtitle>`. Otherwise `title`.                                     | str\| content      | `""`                 |
+| subtitle            | Sets the subtitle of the presentation. Used on the title slide and in the footer of each slide. If `subtitle` is set the footer will contain `<title> - <subtitle>`. Otherwise `title`.                                      | str\| content      | `""`                 |
 | authors             | A list of authors that is joined with `,` displayed in the footer of each non-title slide.                                                                                                                                   | array<str>         | `()`                 |
 | authors-title-slide | The Content displayed on the title slide to show the authors.                                                                                                                                                                | content            | `[]`                 |
 | customDate          | A flag used to indicate if `date` should be interpreted as `datetime` or `content`.                                                                                                                                          | bool               | `false`              |
@@ -67,3 +95,39 @@ World
 | logoInstitution     | The logo of the institution for which the presenter works. Is used on the upper left corner of the title slide and in the lower right corner of each slide.                                                                  | content            | `none`               |
 | logoFaculty         | The logo of the faculty the presenter works for. Is used in the upper right corner of the title slide.                                                                                                                       | content            | `none`               |
 | sourcesTitle        | The title of the slide containing the bibliography. If set to the acutal value, the slide will not be part of the navigation in the header.                                                                                  | str                | `"Quellen"`          |
+
+### htwk-sources
+
+Displays a slide intended for the bibliography which is not displayed in the navigation in the header.
+
+Example call:
+
+```typst
+#htwk-sources(title: "Bibliography")[#bibliography(title: none,"sources.bib")]
+```
+
+| Name  | Description                                         | Type | Default     |
+| ----- | --------------------------------------------------- | ---- | ----------- |
+| title | The title of the slide containing the bibliography. | str  | `"Quellen"` |
+
+### htwk-outline
+
+Displays a slide containing the outline which is not displayed in the navigation in the header. The function internally calls typst's `outline` configured to only show top level headings.
+
+```typst
+#htwk-outline(title: "Outline")
+```
+
+| Name  | Description                                    | Type | Default    |
+| ----- | ---------------------------------------------- | ---- | ---------- |
+| title | The title of the slide containing the outline. | str  | `"Inhalt"` |
+
+### htwk-title-slide
+
+Displays the title slide containing information passed to the `htwk-stripes-theme` function. Uses: `logoInstitution`, `logoFaculty`, `title`, `subtitle`, `date`, `authors-title-slide` and `institution`.
+
+Example call:
+
+```typst
+#htwk-title-slide()
+```
