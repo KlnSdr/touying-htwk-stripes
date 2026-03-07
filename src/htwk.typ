@@ -380,7 +380,7 @@
     ]
   }
 
-  #let htwk-theme(
+  #let htwk-stripes-theme(
     title: "",
     subtitle: "",
     authors: (),

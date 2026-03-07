@@ -2,7 +2,7 @@
 
 #set text(lang: "de")
 
-#show: htwk-theme.with(
+#show: htwk-stripes-theme.with(
   aspect-ratio: "4-3",
   font: "Arimo",
   title: [Design by Contract],
