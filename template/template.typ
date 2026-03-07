@@ -1,5 +1,5 @@
 #import "@preview/touying:0.6.2": *
-#import "@local/touying-htwk-stripes:1.0.0": *
+#import "@preview/touying-htwk-stripes:1.0.0": *
 
 #show: htwk-stripes-theme.with(
   aspect-ratio: "4-3",

@@ -1,4 +1,4 @@
-#import "@local/touying-htwk-stripes:1.0.0": *
+#import "@preview/touying-htwk-stripes:1.0.0": *
 
 #set text(lang: "de")
 
