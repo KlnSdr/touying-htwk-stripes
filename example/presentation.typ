@@ -1,5 +1,5 @@
 #import "@preview/touying:0.6.1": *
-#import "/src/lib.typ": *
+#import "@local/touying-htwk-theme:1.0.0": *
 
 #set text(lang: "de")
 
@@ -21,8 +21,8 @@
     date: datetime.today(),
     institution: [HTWK Leipzig],
   ),
-  logoInstitution: "../example/assets/htwk.png",
-  logoFaculty: "../example/assets/fim.png",
+  logoInstitution: image("assets/htwk.png"),
+  logoFaculty: image("assets/fim.png"),
   config-common(handout: false)
 )
 

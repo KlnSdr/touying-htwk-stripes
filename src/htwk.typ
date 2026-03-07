@@ -20,6 +20,10 @@
 
 #let outlineShown = counter("outlineShown")
 
+#let logo(content, h) = box(height: h)[
+  #align(center + horizon)[#content]
+]
+
 #let display-date(date) = {
   return str(date.day()) + ". " + get-month-name(date.month()) + " " + str(date.year())
 }
@@ -166,7 +170,7 @@
         + if self.info.subtitle != none [ \- #self.info.subtitle] else []
       ))
     ],
-    place(right, if self.store.logoInstitution != none [#image(self.store.logoInstitution, height: .7cm)] else [])
+    place(right, [#logo(self.store.logoInstitution, .7cm)])
   )
 }
 
@@ -231,9 +235,9 @@
   grid(
     columns: (1fr, 2fr, 1fr),
     fill: none,
-    if self.store.logoInstitution != none [#image(self.store.logoInstitution, height: 1.2cm)] else [],
+    logo(self.store.logoInstitution, 1.2cm),
     [],
-    if self.store.logoFaculty != none [#image(self.store.logoFaculty, height: 1.2cm)] else [],
+    logo(self.store.logoFaculty, 1.2cm),
   )
 }
 
@@ -257,7 +261,7 @@
     },
     [
       #set align(right + horizon)
-      HTWK Leipzig
+      #info.institution
     ]
   )
 }
@@ -367,9 +371,8 @@
   })
 
   #let htwk-theme(
-    aspect-ratio: "16-9",
-    font: "Arimo Nerd Font",
-    footer: none,
+    aspect-ratio: "4-3",
+    font: "New Computer Modern",
     primaryColor: rgb("#009ee3"),
     textColorLight: rgb("#ffffff"),
     textColorDark: rgb("#000000"),
@@ -378,8 +381,6 @@
     ..args,
     body,
   ) = {
-    set text(size: 20pt)
-
     show: touying-slides.with(
       config-page(
         paper: "presentation-" + aspect-ratio,
