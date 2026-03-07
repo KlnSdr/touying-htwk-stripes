@@ -34,7 +34,7 @@ create-release:
 	mkdir -p packages/preview/touying-htwk-stripes/$$VERSION; \
 	cp $(ROOT_DIR)/typst.toml packages/preview/touying-htwk-stripes/$$VERSION; \
 	cp $(ROOT_DIR)/CHANGELOG.md packages/preview/touying-htwk-stripes/$$VERSION; \
-	cp $(ROOT_DIR)/Readme.md packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp $(ROOT_DIR)/README.md packages/preview/touying-htwk-stripes/$$VERSION; \
 	cp $(ROOT_DIR)/LICENSE packages/preview/touying-htwk-stripes/$$VERSION; \
 	cp -r $(ROOT_DIR)/src/ packages/preview/touying-htwk-stripes/$$VERSION; \
 	cp -r $(ROOT_DIR)/template/ packages/preview/touying-htwk-stripes/$$VERSION; \
