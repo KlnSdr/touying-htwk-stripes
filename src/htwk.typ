@@ -24,7 +24,10 @@
   #align(center + horizon)[#content]
 ]
 
-#let display-date(date) = {
+#let display-date(date: datetime.today(), useCustomDate: false) = {
+  if useCustomDate {
+    return date
+  }
   return str(date.day()) + ". " + get-month-name(date.month()) + " " + str(date.year())
 }
 
@@ -164,10 +167,10 @@
     ]),
     line(start: (0%, 0%), angle: 90deg, length: .7cm, stroke: .5pt + rgb("#808080")),
     [
-      #text(size: .3cm, self.info.authors.join(", ") + ",")
-      #text(size: .3cm, display-date(self.info.date)) \
-      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.info.title
-        + if self.info.subtitle != none [ \- #self.info.subtitle] else []
+      #text(size: .3cm, self.store.authors.join(", ") + ",")
+      #text(size: .3cm, display-date(date: self.store.date, useCustomDate: self.store.customDate)) \
+      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.store.title
+        + if self.store.subtitle != none [ \- #self.store.subtitle] else []
       ))
     ],
     place(right, [#logo(self.store.logoInstitution, .7cm)])
@@ -241,7 +244,7 @@
   )
 }
 
-#let footerTitleSlide(self, info) = {
+#let footerTitleSlide(self) = {
   set text(fill: self.colors.neutral-darkest, size: 25pt)
   show: components.cell.with(inset: 2cm)
   grid(
@@ -252,23 +255,22 @@
         spacing: 0.5em,
       )
       set align(left + horizon)
-      if info.date != none {
-        block(display-date(self.info.date))
+      if self.store.date != none {
+        block(display-date(date: self.store.date, useCustomDate: self.store.customDate))
       }
-      if info.authors-title-slide != none {
-        block(info.authors-title-slide)
+      if self.store.authors-title-slide != none {
+        block(self.store.authors-title-slide)
       }
     },
     [
       #set align(right + horizon)
-      #info.institution
+      #self.store.institution
     ]
   )
 }
 
 #let htwk-title-slide(..args) = touying-slide-wrapper(self => {
-  let info = self.info + args.named()
-  let footerTitleSlideWithInfo(self) = footerTitleSlide(self, info);
+  let info = self.store + args.named()
   let body = {
     set text(font: self.store.font, weight: "light", size: 20pt)
     set align(center + horizon)
@@ -282,7 +284,7 @@
     self,
     config-page(
       header: headerTitleSlide,
-      footer: footerTitleSlideWithInfo
+      footer: footerTitleSlide
     ),
   )
   let margin = (x: 4em, y: 2em)
@@ -291,7 +293,7 @@
     paper: "presentation-" + self.store.aspect-ratio,
     header: headerTitleSlide(self),
     header-ascent: 0em,
-    footer: footerTitleSlideWithInfo(self),
+    footer: footerTitleSlide(self),
     footer-descent: -8cm,
     background: {
       move(
@@ -379,6 +381,13 @@
   }
 
   #let htwk-theme(
+    title: "",
+    subtitle: "",
+    authors: (),
+    authors-title-slide: [],
+    customDate: false,
+    date: datetime.today(),
+    institution: "",
     aspect-ratio: "4-3",
     font: "New Computer Modern",
     primaryColor: rgb("#009ee3"),
@@ -405,13 +414,19 @@
         neutral-darkest: textColorDark,
       ),
       config-store(
-        title: none,
         footer: footer,
         font: font,
         aspect-ratio: aspect-ratio,
         logoInstitution: logoInstitution,
         logoFaculty: logoFaculty,
-        sourcesTitle: sourcesTitle
+        sourcesTitle: sourcesTitle,
+        title: title,
+        subtitle: subtitle,
+        authors: authors,
+        authors-title-slide: authors-title-slide,
+        customDate: customDate,
+        date: date,
+        institution: institution,
       ),
       ..args,
     )

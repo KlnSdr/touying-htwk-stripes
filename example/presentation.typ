@@ -6,21 +6,20 @@
 #show: htwk-theme.with(
   aspect-ratio: "4-3",
   font: "Arimo",
-  config-info(
-    title: [Design by Contract],
-    subtitle: [Softwareengineering],
-    authors: ("Author A", "Author B", "Author C"),
-    authors-title-slide:
-    [
-      Author A
-      #linebreak()
-      Author B
-      #linebreak()
-      Author C
-    ],
-    date: datetime.today(),
-    institution: [HTWK Leipzig],
-  ),
+  title: [Design by Contract],
+  subtitle: [Softwareengineering],
+  authors: ("Author A", "Author B", "Author C"),
+  authors-title-slide:
+  [
+    Author A
+    #linebreak()
+    Author B
+    #linebreak()
+    Author C
+  ],
+  customDate: false,
+  date: datetime.today(),
+  institution: [HTWK Leipzig],
   logoInstitution: image("assets/htwk.png"),
   logoFaculty: image("assets/fim.png"),
   sourcesTitle: "Quellen",
@@ -29,8 +28,7 @@
 
 #htwk-title-slide()
 
-== Outline <touying:hidden>
-#htwk-outline()
+#htwk-outline(title: "Inhalt")
 
 
 #include "slides/history.typ"
