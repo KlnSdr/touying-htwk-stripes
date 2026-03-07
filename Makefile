@@ -45,5 +45,5 @@ create-release:
 	git commit -m "touying-htwk-stripes:$$VERSION"; \
 	git push origin main; \
 	cd /tmp; \
-	rm -rf packages
-	git add -A; git commit -m "v$$VERSION"; git tag v$$VERSION
+	rm -rf packages; \
+	cd $(ROOT_DIR); \ git add -A; git commit -m "v$$VERSION"; git tag v$$VERSION
