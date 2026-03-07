@@ -38,9 +38,12 @@ create-release:
 	cp $(ROOT_DIR)/LICENSE packages/preview/touying-htwk-stripes/$$VERSION; \
 	cp -r $(ROOT_DIR)/src/ packages/preview/touying-htwk-stripes/$$VERSION; \
 	cp -r $(ROOT_DIR)/template/ packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp -r $(ROOT_DIR)/assets/ packages/preview/touying-htwk-stripes/$$VERSION; \
 	rm packages/preview/touying-htwk-stripes/$$VERSION/template/template.pdf; \
+	rm packages/preview/touying-htwk-stripes/$$VERSION/assets/exampleSlidesCombined.png; \
 	git add -A;\
 	git commit -m "touying-htwk-stripes:$$VERSION"; \
 	git push origin main; \
 	cd /tmp; \
 	rm -rf packages
+	git add -A; git commit -m "v$$VERSION"; git tag v$$VERSION
