@@ -1,0 +1,16 @@
+[package]
+name = "touying-htwk-theme"
+version = "1.0.0"
+entrypoint = "src/lib.typ"
+authors = [
+  "KlnSdr"
+]
+license = "MIT"
+description = "Touying theme adhering to the core principles of the style guide of the university of applied scieneces Leipzig (HTWK)"
+# homepage = ""
+repository = "https://github.com/klnsdr/touying-htwk-theme"
+keywords = ["touying", "htwk", "leipzig", "presentation", "slides", "lecture", "university", "theme"]
+categories = ["presentation"]
+disciplines = []
+compiler = "0.14.2"
+exclude = []
