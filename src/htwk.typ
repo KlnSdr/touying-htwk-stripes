@@ -392,7 +392,6 @@
     aspect-ratio: "4-3",
     font: "Libertinus Serif",
     primaryColor: rgb("#009ee3"),
-    textColorLight: rgb("#ffffff"),
     textColorDark: rgb("#000000"),
     logoInstitution: none,
     logoFaculty: none,
@@ -411,7 +410,6 @@
       config-methods( alert: utils.alert-with-primary-color ),
       config-colors(
         primary: primaryColor,
-        neutral-lightest: textColorLight,
         neutral-darkest: textColorDark,
       ),
       config-store(
