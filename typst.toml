@@ -17,4 +17,4 @@ exclude = []
 [template]
 path = "template"
 entrypoint = "template.typ"
-thumbnail = "thumb.png"
+thumbnail = "assets/thumb.png"

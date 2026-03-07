@@ -10,4 +10,4 @@ image-from-example:
 	rm slide*.png
 
 create-thumbnail:
-	typst compile --root . template/template.typ --format png --pages 1 template/thumb.png
+	typst compile --root . template/template.typ --format png --pages 1 assets/thumb.png
