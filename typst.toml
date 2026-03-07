@@ -13,3 +13,8 @@ categories = ["presentation"]
 disciplines = []
 compiler = "0.14.2"
 exclude = []
+
+[template]
+path = "template"
+entrypoint = "template.typ"
+thumbnail = ""

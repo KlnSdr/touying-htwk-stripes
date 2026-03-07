@@ -19,6 +19,7 @@
 }
 
 #let outlineShown = counter("outlineShown")
+#let sourcesShown = counter("sourcesShown")
 
 #let logo(content, h) = box(height: h)[
   #align(center + horizon)[#content]
@@ -389,7 +390,7 @@
     date: datetime.today(),
     institution: "",
     aspect-ratio: "4-3",
-    font: "New Computer Modern",
+    font: "Libertinus Serif",
     primaryColor: rgb("#009ee3"),
     textColorLight: rgb("#ffffff"),
     textColorDark: rgb("#000000"),
