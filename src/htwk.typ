@@ -1,4 +1,4 @@
-#import "@preview/touying:0.6.1": *
+#import "@preview/touying:0.6.2": *
 
 #let get-month-name(month) = {
   let months = (

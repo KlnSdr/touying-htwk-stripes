@@ -1,5 +1,4 @@
-#import "@preview/touying:0.6.1": *
-#import "@local/touying-htwk-theme:1.0.0": *
+#import "@local/touying-htwk-stripes:1.0.0": *
 
 #set text(lang: "de")
 
@@ -22,8 +21,7 @@
   institution: [HTWK Leipzig],
   logoInstitution: image("assets/htwk.png"),
   logoFaculty: image("assets/fim.png"),
-  sourcesTitle: "Quellen",
-  config-common(handout: false)
+  sourcesTitle: "Quellen"
 )
 
 #htwk-title-slide()
