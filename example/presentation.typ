@@ -16,12 +16,12 @@
     #linebreak()
     Author C
   ],
-  customDate: false,
+  custom-date: false,
   date: datetime.today(),
   institution: [University of Example],
-  logoInstitution: image("assets/uoe.svg"),
-  logoFaculty: image("assets/foe.svg"),
-  sourcesTitle: "Bibliography"
+  logo-institution: image("assets/uoe.svg"),
+  logo-faculty: image("assets/foe.svg"),
+  sources-title: "Bibliography"
 )
 
 #htwk-title-slide()

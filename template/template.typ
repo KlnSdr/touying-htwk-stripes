@@ -12,8 +12,8 @@
   ],
   date: datetime.today(),
   institution: [HTWK Leipzig],
-  logoInstitution: image("htwk.png"),
-  logoFaculty: image("fim.png"),
+  logo-institution: image("htwk.png"),
+  logo-faculty: image("fim.png"),
 )
 
 #htwk-title-slide()
