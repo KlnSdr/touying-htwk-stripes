@@ -1,4 +1,4 @@
-#import "@preview/touying:0.6.2": *
+#import "@preview/touying:0.6.3": *
 #import "@preview/touying-htwk-stripes:1.0.0": *
 
 #show: htwk-stripes-theme.with(

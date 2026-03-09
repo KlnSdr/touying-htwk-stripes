@@ -1,4 +1,4 @@
-#import "@preview/touying:0.6.2": *
+#import "@preview/touying:0.6.3": *
 
 #let get-month-name(month) = {
   let months = (
@@ -84,7 +84,7 @@
         slideCounts.at(i) = -1
       } else {
         if i == slideCounts.len() - 1 {
-          slideCounts.at(i) = counter(page).final().at(0) - int(slideCounts.at(i))
+          slideCounts.at(i) = counter(page).final().at(0) - int(slideCounts.at(i)) + 1
         } else {
           slideCounts.at(i) = int(slideCounts.at(i + 1)) - int(slideCounts.at(i))
         }
