@@ -45,5 +45,36 @@ create-release:
 	git commit -m "touying-htwk-stripes:$$VERSION"; \
 	git push origin main; \
 	cd /tmp; \
-	rm -rf packages; \
-	cd $(ROOT_DIR); \ git add -A; git commit -m "v$$VERSION"; git tag v$$VERSION
+	rm -rf packages;
+
+update-release:
+	@if [ -z "$(VERSION)" ]; then \
+		read -p "version: " VERSION; \
+	else \
+		VERSION="$(VERSION)"; \
+	fi; \
+	make image-from-example; \
+	make create-thumbnail; \
+	cd /tmp; \
+	git clone --depth 1 --no-checkout --filter="tree:0" git@github.com:KlnSdr/packages; \
+	cd packages; \
+	git sparse-checkout init; \
+	git sparse-checkout set packages/preview/touying-htwk-stripes; \
+	git remote add upstream git@github.com:typst/packages; \
+	git config remote.upstream.partialclonefilter tree:0; \
+	git checkout main; \
+	mkdir -p packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp $(ROOT_DIR)/typst.toml packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp $(ROOT_DIR)/CHANGELOG.md packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp $(ROOT_DIR)/README.md packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp $(ROOT_DIR)/LICENSE packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp -r $(ROOT_DIR)/src/ packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp -r $(ROOT_DIR)/template/ packages/preview/touying-htwk-stripes/$$VERSION; \
+	cp -r $(ROOT_DIR)/assets/ packages/preview/touying-htwk-stripes/$$VERSION; \
+	rm packages/preview/touying-htwk-stripes/$$VERSION/template/template.pdf; \
+	rm packages/preview/touying-htwk-stripes/$$VERSION/assets/exampleSlidesCombined.png; \
+	git add -A;\
+	git commit -m "touying-htwk-stripes:$$VERSION adjustment"; \
+	git push origin main; \
+	cd /tmp; \
+	rm -rf packages;
