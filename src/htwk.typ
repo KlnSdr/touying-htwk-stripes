@@ -319,6 +319,41 @@
   body
 })
 
+#let htwk-focus-slide(
+  content: [],
+  ..args) = touying-slide-wrapper(self => {
+    set text(font: self.store.font, weight: "light", size: 20pt)
+    set text(fill: self.colors.neutral-dark)
+    let body = {
+      show: components.cell.with(inset: -1em)
+      show: pad.with(y: 1cm)
+      grid(
+        columns: (1cm, 1fr, 1cm),
+        rows: 10em,
+        align: center + horizon,
+        gutter: .5cm,
+        fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
+        [],
+        {
+          move(dy: .5cm, components.adaptive-columns(
+            [
+              #set text(font: self.store.font, weight: "light", size: 30pt)
+              #content
+            ]
+          ))
+        },
+        []
+      )
+    }
+    self = utils.merge-dicts(
+      self,
+      config-page(
+        margin: (top: 0em, bottom: 2em, x: 2em),
+      ),
+    )
+    touying-slide(self: self, align(horizon, body), ..args)
+  })
+
 #let htwk-outline(
   title: "Inhalt",
   ..args) = touying-slide-wrapper(self => {
