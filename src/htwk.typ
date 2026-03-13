@@ -334,14 +334,10 @@
         gutter: .5cm,
         fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
         [],
-        {
-          move(dy: .5cm, components.adaptive-columns(
-            [
-              #set text(font: self.store.font, weight: "light", size: 30pt)
-              #content
-            ]
-          ))
-        },
+        [
+          #set text(font: self.store.font, weight: "light", size: 30pt)
+          == #content
+        ],
         []
       )
     }

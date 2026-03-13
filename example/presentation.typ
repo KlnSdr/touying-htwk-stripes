@@ -34,7 +34,7 @@ Hello
 == Second Slide
 World
 
-#htwk-focus-slide(content: [Hello])
+#htwk-focus-slide(content: [Hello World])
 
 = Second Section
 == Third Slide
