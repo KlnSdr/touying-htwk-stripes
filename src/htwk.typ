@@ -37,7 +37,7 @@
     set par(
       spacing: .3cm
     )
-    set text(size: .5cm)
+    set text(size: .5cm * self.store.font-scaling)
     let chapters = query(
       heading.where(
         level: 1,
@@ -158,19 +158,19 @@
 #let footer(self) = {
   set align(bottom)
   show: pad.with(1cm)
-  set text(fill: self.colors.neutral-darkest, size: .5em)
+  set text(fill: self.colors.neutral-darkest, size: .5em * self.store.font-scaling)
   grid(
     columns: (.9cm, .1cm, 1fr, 4cm),
     align: left,
     gutter: 5pt,
     place(right, [
-      #text(size: 1cm, context utils.slide-counter.display())
+      #text(size: 1cm * self.store.font-scaling, context utils.slide-counter.display())
     ]),
     line(start: (0%, 0%), angle: 90deg, length: .7cm, stroke: .5pt + rgb("#808080")),
     [
-      #text(size: .3cm, self.store.authors.join(", ") + ",")
-      #text(size: .3cm, display-date(date: self.store.date, useCustomDate: self.store.customDate)) \
-      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm, self.store.presentationTitle
+      #text(size: .3cm * self.store.font-scaling, self.store.authors.join(", ") + ",")
+      #text(size: .3cm * self.store.font-scaling, display-date(date: self.store.date, useCustomDate: self.store.customDate)) \
+      #link((page: 1, x: 0pt, y: 0pt), text(size: .3cm * self.store.font-scaling, self.store.presentationTitle
         + if self.store.subtitle != none [ \- #self.store.subtitle] else []
       ))
     ],
@@ -200,10 +200,10 @@
         }
         else {
           if self.store.title != none {
-            set text(fill: self.colors.neutral-darkest, size: 1cm)
+            set text(fill: self.colors.neutral-darkest, size: 1cm * self.store.font-scaling)
             utils.call-or-display(self, self.store.title)
           } else {
-            set text(fill: self.colors.neutral-darkest, size: 1cm)
+            set text(fill: self.colors.neutral-darkest, size: 1cm * self.store.font-scaling)
             utils.display-current-heading(level: 2)
           }
         }
@@ -218,7 +218,7 @@
     #set text(fill: self.colors.primary)
     –
   ]))
-  set text(font: self.store.font, weight: "light", size: 20pt)
+  set text(font: self.store.font, weight: "light", size: 20pt * self.store.font-scaling)
   if title != auto {
     self.store.title = title
   }
@@ -246,7 +246,7 @@
 }
 
 #let footerTitleSlide(self) = {
-  set text(fill: self.colors.neutral-darkest, size: 25pt)
+  set text(fill: self.colors.neutral-darkest, size: 25pt * self.store.font-scaling)
   show: components.cell.with(inset: 2cm)
   grid(
     columns: (1fr, 1fr),
@@ -273,12 +273,12 @@
 #let htwk-title-slide(..args) = touying-slide-wrapper(self => {
   let info = self.store + args.named()
   let body = {
-    set text(font: self.store.font, weight: "light", size: 20pt)
+    set text(font: self.store.font, weight: "light", size: 20pt * self.store.font-scaling)
     set align(center + horizon)
-    text(size: 2em, fill: self.colors.neutral-darkest, weight: "bold", info.presentationTitle)
+    text(size: 2em * self.store.font-scaling, fill: self.colors.neutral-darkest, weight: "bold", info.presentationTitle)
     if info.subtitle != none {
       linebreak()
-      text(size: 1em, fill: self.colors.neutral-darkest, weight: "bold", info.subtitle)
+      text(size: 1em * self.store.font-scaling, fill: self.colors.neutral-darkest, weight: "bold", info.subtitle)
     }
   }
   self = utils.merge-dicts(
@@ -322,7 +322,7 @@
 #let htwk-focus-slide(
   content: [],
   ..args) = touying-slide-wrapper(self => {
-    set text(font: self.store.font, weight: "light", size: 20pt)
+    set text(font: self.store.font, weight: "light", size: 20pt * self.store.font-scaling)
     set text(fill: self.colors.neutral-dark)
     let body = {
       show: components.cell.with(inset: -1em)
@@ -335,7 +335,7 @@
         fill: (rgb(self.colors.primary), none, rgb(self.colors.primary)),
         [],
         [
-          #set text(font: self.store.font, weight: "light", size: 30pt)
+          #set text(font: self.store.font, weight: "light", size: 30pt * self.store.font-scaling)
           == #content
         ],
         []
@@ -354,7 +354,7 @@
   title: "Inhalt",
   ..args) = touying-slide-wrapper(self => {
     outlineShown.step()
-    set text(font: self.store.font, weight: "light", size: 20pt)
+    set text(font: self.store.font, weight: "light", size: 20pt * self.store.font-scaling)
     set outline.entry(fill: none)
     set text(fill: self.colors.neutral-dark)
     show outline.entry.where(level: 1): it => {
@@ -391,7 +391,7 @@
       )
     }
     let headerWithoutColoredBars(self) = header(self, colorizeEdges: false, title: [
-      #set text(fill: self.colors.neutral-darkest, size: 1cm)
+      #set text(fill: self.colors.neutral-darkest, size: 1cm * self.store.font-scaling)
       #utils.call-or-display(self, title)
     ])
     self = utils.merge-dicts(
@@ -414,7 +414,7 @@
 
   #let htwk-stripes-theme(
     title: "",
-    subtitle: "",
+    subtitle: none,
     authors: (),
     authors-title-slide: [],
     custom-date: false,
@@ -427,6 +427,7 @@
     logo-institution: none,
     logo-faculty: none,
     sources-title: "Quellen",
+    font-scaling: 1.0,
     ..args,
     body,
   ) = {
@@ -458,6 +459,7 @@
         customDate: custom-date,
         date: date,
         institution: institution,
+        font-scaling: font-scaling
       ),
       ..args,
     )
