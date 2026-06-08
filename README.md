@@ -78,22 +78,23 @@ Example call:
 )
 ```
 
-| Name                | Description                                                                                                                                                                                                                                                         | Type                    | Default              |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------------------- |
-| title               | Sets the title of the presentation. Used on the title slide and in the footer of each slide.                                                                                                                                                                        | `str` \| `content`      | `""`                 |
-| subtitle            | Sets the subtitle of the presentation. Used on the title slide and in the footer of each slide. If `subtitle` is set the footer will contain `<title> - <subtitle>`. Otherwise `title`.                                                                             | `str` \| `content`      | `""`                 |
-| authors             | A list of authors that is joined with `,` displayed in the footer of each non-title slide.                                                                                                                                                                          | `array<str>`            | `()`                 |
-| authors-title-slide | The Content displayed on the title slide to show the authors.                                                                                                                                                                                                       | `content`               | `[]`                 |
-| custom-date          | A flag used to indicate if `date` should be interpreted as `datetime` or `content`.                                                                                                                                                                                 | `bool`                  | `false`              |
+| Name                | Description                                                                                                                                                                                                                                                          | Type                    | Default              |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------------------- |
+| title               | Sets the title of the presentation. Used on the title slide and in the footer of each slide.                                                                                                                                                                         | `str` \| `content`      | `""`                 |
+| subtitle            | Sets the subtitle of the presentation. Used on the title slide and in the footer of each slide. If `subtitle` is set the footer will contain `<title> - <subtitle>`. Otherwise `title`.                                                                              | `str` \| `content`      | `""`                 |
+| authors             | A list of authors that is joined with `,` displayed in the footer of each non-title slide.                                                                                                                                                                           | `array<str>`            | `()`                 |
+| authors-title-slide | The Content displayed on the title slide to show the authors.                                                                                                                                                                                                        | `content`               | `[]`                 |
+| custom-date         | A flag used to indicate if `date` should be interpreted as `datetime` or `content`.                                                                                                                                                                                  | `bool`                  | `false`              |
 | date                | The date displayed on the title slide and in the footer of each slide. If `custom-date` is `false` and a valid `datetime` is given the date is displayed as `[d]d. M yyyy` with `M` beeing the german full name of the month. Otherwise it is displayed as provided. | `datetime` \| `content` | `datetime.today()`   |
-| institution         | The institution for wich the presenter works.                                                                                                                                                                                                                       | `str` \| `content`      | `""`                 |
-| aspect-ratio        | The aspect ratio used for the slides. It is passed unchanged to touying.                                                                                                                                                                                            | `str`                   | `"4-3"`              |
-| font                | The font used to display the slide contents and titles, nav bar, etc.                                                                                                                                                                                               | `str`                   | `"Libertinus Serif"` |
-| primary-color        | The color used in the stripes, bullet points, bold text and level 3 headings.                                                                                                                                                                                       | `color`                 | `rgb("#009ee3")`     |
-| text-color-dark       | The color used to display text like titles, authors, institution and normal content. When setting the color globally outside of the theme only unformatted text on the slides is affected.                                                                          | `color`                 | `rgb("#000000")`     |
-| logo-institution     | The logo of the institution for which the presenter works. Is used on the upper left corner of the title slide and in the lower right corner of each slide.                                                                                                         | `content`               | `none`               |
-| logo-faculty         | The logo of the faculty the presenter works for. Is used in the upper right corner of the title slide.                                                                                                                                                              | `content`               | `none`               |
-| sources-title        | The title of the slide containing the bibliography. If set to the acutal value, the slide will not be part of the navigation in the header.                                                                                                                         | `str`                   | `"Quellen"`          |
+| institution         | The institution for wich the presenter works.                                                                                                                                                                                                                        | `str` \| `content`      | `""`                 |
+| aspect-ratio        | The aspect ratio used for the slides. It is passed unchanged to touying.                                                                                                                                                                                             | `str`                   | `"4-3"`              |
+| font                | The font used to display the slide contents and titles, nav bar, etc.                                                                                                                                                                                                | `str`                   | `"Libertinus Serif"` |
+| primary-color       | The color used in the stripes, bullet points, bold text and level 3 headings.                                                                                                                                                                                        | `color`                 | `rgb("#009ee3")`     |
+| text-color-dark     | The color used to display text like titles, authors, institution and normal content. When setting the color globally outside of the theme only unformatted text on the slides is affected.                                                                           | `color`                 | `rgb("#000000")`     |
+| logo-institution    | The logo of the institution for which the presenter works. Is used on the upper left corner of the title slide and in the lower right corner of each slide.                                                                                                          | `content`               | `none`               |
+| logo-faculty        | The logo of the faculty the presenter works for. Is used in the upper right corner of the title slide.                                                                                                                                                               | `content`               | `none`               |
+| sources-title       | The title of the slide containing the bibliography. If set to the acutal value, the slide will not be part of the navigation in the header.                                                                                                                          | `str`                   | `"Quellen"`          |
+| font-scaling        | Controls the scaling of all font-sizes defined by the theme.                                                                                                                                                                                                         | `float`                 | `1.0`                |
 
 ### htwk-sources
 
@@ -130,3 +131,17 @@ Example call:
 ```typst
 #htwk-title-slide()
 ```
+
+### htwk-focus-slide
+
+Displays a slide without header and footer containing only the provided content.
+
+Example call:
+
+```typst
+#htwk-focus-slide(content: [Hello World])
+```
+
+| Name    | Description             | Type      | Default |
+| ------- | ----------------------- | --------- | ------- |
+| content | The content to display. | `content` | `[]`    |
